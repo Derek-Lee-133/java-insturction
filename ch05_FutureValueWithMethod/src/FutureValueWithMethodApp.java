@@ -13,11 +13,9 @@ public class FutureValueWithMethodApp {
 			double monthlyInvestment;
 			double interestRate;
 			int years;
-			monthlyInvestment = getDouble(sc, "Enter monthly investment:   ");
-			interestRate = getDouble(sc, "Enter yearly interest rate: ");
-			years = getInt(sc, "Enter number of years: ");
-
-			
+			monthlyInvestment = getDoubleWithinRange(sc, "Enter monthly investment:   ", 0, 1000);
+			interestRate = getDoubleWithinRange(sc, "Enter yearly interest rate: ", 0, 30);
+			years = getIntWithinRange(sc, "Enter number of years: ", 0, 100);
 
 			// convert yearly values to monthly values
 			double monthlyInterestRate = interestRate / 12 / 100;
@@ -69,21 +67,58 @@ public class FutureValueWithMethodApp {
 		return retVal;
 	}
 
-	public static int getInt(Scanner sc, String prompt) {
-		int retVal = 0;
-		System.out.println(prompt);
-		
-		boolean isValid = false;
-		
-		while (!isValid) {
-			if (sc.hasNextInt()) {retVal = sc.nextInt();
-			sc.nextLine();
-			isValid = true;
-		} else {
-			System.out.println("Invalid Integer");
-			sc.nextLine();
+	public static double getDoubleWithinRange(Scanner sc, String prompt, double min, double max) {
+		double retVal = 0.0;
+		boolean inValid = false;
+		while (!inValid) {
+			retVal = getDouble(sc, prompt);
+			if (retVal <= min) {
+				System.out.println("Error! Number must be greater than " + min + ".");
+			} else if (retVal >= max) {
+				System.out.println("Error! Number must be less than " + max + ".");
+			} else {
+				inValid = true;
+			}
+
 		}
 		return retVal;
-		
+	}
+
+	public static int getIntWithinRange(Scanner sc, String prompt, int min, int max) {
+		int retVal = 0;
+		boolean isValid = false;
+		while (!isValid) {
+			retVal = getInt(sc, prompt);
+			if (retVal <= min) {
+				System.out.println("Error! Number must be more than " + min + ".");
+			} else if (retVal >= max) {
+				System.out.println("Error! Number must be less than " + max + ".");
+			} else {
+				isValid = true;
+			}
+
+		}
+		return retVal;
+	}
+
+	public static int getInt(Scanner sc, String prompt) {
+		int retVal = 0;
+
+		boolean isValid = false;
+
+		while (!isValid) {
+			System.out.print(prompt);
+
+			if (sc.hasNextInt()) {
+				retVal = sc.nextInt();
+				sc.nextLine();
+				isValid = true;
+			} else {
+				System.out.println("Invalid Integer");
+				sc.nextLine();
+			}
+		}
+		return retVal;
+
 	}
 }
