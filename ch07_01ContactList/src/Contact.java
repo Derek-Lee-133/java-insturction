@@ -7,11 +7,18 @@ public class Contact {
 	private String phone;
 
 //  the consturctor
+	
+
+	 
+
 	public Contact() {
-		firstname = "";
-		lastname = "";
-		email = "";
-		phone = "";
+		this("","","","");
+	}
+	public Contact(String firstname, String lastname, String email, String phone) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.phone = phone;
 	}
 	// set and get methods for variables
 
@@ -19,9 +26,9 @@ public class Contact {
 		this.firstname = firstname;
 	}
 
- public String getFirstName() {
- return firstname;
- }
+	public String getFirstName() {
+		return firstname;
+	}
 
 	public void setLastName(String lastname) {
 		this.lastname = lastname;
@@ -48,11 +55,20 @@ public class Contact {
 
 	}
 
-//	public void displayContact(String firstname, String lastname, String email, String phone) {
-// this.firstname = firstname;
-// this.lastname = lastname;
-// this.email = email;
-// this.phone = phone;
-
+	public  String displayContact() {
+		String retVal = "---------------------------------\n" +	
+						"---Current Contact----------------\n"+
+						"------------------------------------\n"+
+						"name:            " + this.firstname + this.lastname + "\n" + 
+						"email adderss:    " + this.email + "\n" +
+						"phone Number:        " + this.phone +"\n" +
+						"-----------------------------------------";
+		return retVal;
+	
+	
 	}
+
+		
+	}
+
 
