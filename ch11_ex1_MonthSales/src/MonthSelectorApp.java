@@ -19,8 +19,7 @@ public class MonthSelectorApp {
 		monthName[9] = "October";
 		monthName[10] = "November";
 		monthName[11] = "December";
-		
-		
+
 		double[] monthSales = new double[12];
 		monthSales[0] = 995.00;
 		monthSales[1] = 1000.00;
@@ -34,8 +33,6 @@ public class MonthSelectorApp {
 		monthSales[9] = 1040.00;
 		monthSales[10] = 1045.00;
 		monthSales[11] = 1050.00;
-		
-
 
 		// get currency formatting
 		NumberFormat currency = NumberFormat.getCurrencyInstance();
@@ -49,28 +46,31 @@ public class MonthSelectorApp {
 			// validate input
 			if (monthNumber < 1 || monthNumber > monthName.length) {
 				Console.displayLine("Invalid month number. Try again.");
-				
+
 				continue;
 			}
 
 			// get the index number for the month
-		
-				int monthIndex = monthNumber -1;
-			}
-			
+
 			// and display the month name and sales
-		
-         Console.displayLine("Sales for " + monthName[monthNameIndex] +
-                 ": " + currency.format(monthSales[monthSalesIndex]) + "\n");
-			
+
+			int monthIndex = monthNumber - 1;
+			Console.displayLine(
+					"Sales for " + monthName[monthIndex] + ": " + currency.format(monthSales[monthIndex]) + "\n");
+
 			// check if the user wants to continue
 			choice = Console.getString("Continue? (y/n): ");
 			Console.displayLine();
 		}
 
 		// display the total sales for the year
+		double sum = 0.0;
+		 for (double sales : monthSales) {
+	            sum += sales;
+	        }
+	        Console.displayLine("Total sales: " + currency.format(sum));
+	        Console.displayLine();
 
-		Console.displayLine();
 	}
 
 }
