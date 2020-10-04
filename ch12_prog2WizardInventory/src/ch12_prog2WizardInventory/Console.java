@@ -1,3 +1,4 @@
+package ch12_prog2WizardInventory;
 import java.util.Scanner;
 
 public class Console {
