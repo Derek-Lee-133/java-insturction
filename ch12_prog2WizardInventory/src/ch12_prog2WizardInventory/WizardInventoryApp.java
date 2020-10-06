@@ -6,6 +6,8 @@ public class WizardInventoryApp {
 
 	public static void main(String[] args) {
 		// welcome message
+		System.out.println("The Wizard Inventory game");
+		System.out.println();
 
 		// Arraylist
 		ArrayList<String> items = new ArrayList<String>();
@@ -28,8 +30,8 @@ public class WizardInventoryApp {
 			command = Console.getString("Command:  ");
 			System.out.println("-" + command + "-");
 			if (command.equals("show")) {
-				for (String item : items) {
-					Console.displayLine(item);
+				 for (String item : items) {
+					System.out.println(items.indexOf(item) + 1 +"." + item);
 				}
 
 			}
@@ -41,7 +43,7 @@ public class WizardInventoryApp {
 				} else {
 					String itemToAdd = Console.getString("Name:  ");
 					items.add(itemToAdd);
-					Console.displayLine(itemToAdd + " added ");
+					Console.displayLine(itemToAdd + " was added ");
 				}
 
 			}

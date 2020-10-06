@@ -16,7 +16,7 @@ public class ProductApp {
             String productCode = sc.nextLine();  // read the product code
 
             // get the Product object
-            Product p = ProductDB.getProduct(productCode);
+            Product p = ProductDB.getProductFromMap(productCode);
 
             // display the output
             System.out.println();
