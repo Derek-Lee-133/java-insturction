@@ -4,16 +4,19 @@ public class HTMLConverterApp {
 	public static void main(String[] args) {
 		// welcome message
 		System.out.println("HTML Converter");
+		
 
 		// display html text block
 		System.out.println();
 		System.out.println("INPUT");
 		Console.displayLine("<h1>Grocery List</h1>\r\n" + "<ul>\r\n" + " <li>Eggs</li>\r\n" + " <li>Milk</li>\r\n"
 				+ " <li>Butter</li>\r\n" + "</ul>");
+		
 
 		// String conversions
 		String html = "<h1>Grocery List</h1>\r\n" + "<ul>\r\n" + " <li>Eggs</li>\r\n" + " <li>Milk</li>\r\n"
 				+ " <li>Butter</li>\r\n" + "</ul>";
+		
 		System.out.println();
 		int index1 = html.indexOf("G");
 		// System.out.println(index1);

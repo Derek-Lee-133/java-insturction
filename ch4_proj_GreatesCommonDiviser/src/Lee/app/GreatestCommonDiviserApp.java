@@ -25,10 +25,10 @@ public class GreatestCommonDiviserApp {
 			int gGD = calculateGreatestCommonDivisor(firstNumber, SecondNumber);
 			System.out.println("Gratest common divisor  " + gGD);
 			System.out.println();
-		}		
+				
 			choice = Console.getString("Continue? y/n ");
 			
-			
+		}
 		
 
 	}
