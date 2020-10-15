@@ -47,6 +47,9 @@ public class InstructionApp {
 
 		try (BufferedReader in = new BufferedReader(new FileReader(productsFile))) {
 			String line = in.readLine();
+			while (line != null) {
+				System.out.println(line);
+				line = in.readLine();			}
 			System.out.println(line);
 		} catch (IOException e) {
 			System.out.println(e);
