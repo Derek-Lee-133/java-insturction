@@ -1,9 +1,10 @@
+import java.io.IOException;
 import java.util.List;
 
 public interface DAO<T> {
-    T get(String code);
-    List<T> getAll();
-    boolean add(T t);
-    boolean update(T t);
-    boolean delete(T t);
+    T get(String code)throws IOException;
+    List<T> getAll()throws IOException;
+    boolean add(T t)throws IOException;
+    boolean update(T t)throws IOException;
+    boolean delete(T t)throws IOException;
 }

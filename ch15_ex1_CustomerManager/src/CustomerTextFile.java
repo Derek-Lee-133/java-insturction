@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public final class CustomerTextFile implements DAO<Customer> {
 
 	private final String FIELD_SEP = "\t";
 
-	public CustomerTextFile() {
+	public CustomerTextFile() throws IOException {
 		// initialize the class variables
 		customersPath = Paths.get("customers.txt");
 		customersFile = customersPath.toFile();
@@ -28,14 +27,14 @@ public final class CustomerTextFile implements DAO<Customer> {
 	
 
 	@Override
-	public List<Customer> getAll() {
+	public List<Customer> getAll() throws IOException {
 		// if the customers file has already been read, don't read it again
 		if (customers != null) {
 			return customers;
 		}
 
 		customers = new ArrayList<>();
-		if (Files.exists(customersPath)) {
+		
 			try (BufferedReader in = new BufferedReader(new FileReader(customersFile))) {
 				String line = in.readLine();
 				while (line != null) {
@@ -50,22 +49,14 @@ public final class CustomerTextFile implements DAO<Customer> {
 					line = in.readLine();
 					
 				}
-			}catch (IOException e) {
-				System.out.println(e);
-				return null;
 			}
-		}else {
-			System.out.println(customersPath.toAbsolutePath() + "doesn't exist.");
-			return null;
-		}
 
-		// load the array list with Customer objects created from
-		// the data in the file
+
 		return customers;
 	}
 
 	@Override
-	public Customer get(String email) {
+	public Customer get(String email) throws IOException {
 		for (Customer c : customers) {
 			if (c.getEmail().equals(email)) {
 				return c;
@@ -75,19 +66,19 @@ public final class CustomerTextFile implements DAO<Customer> {
 	}
 
 	@Override
-	public boolean add(Customer c) {
+	public boolean add(Customer c) throws IOException {
 		customers.add(c);
 		return this.saveAll();
 	}
 
 	@Override
-	public boolean delete(Customer c) {
+	public boolean delete(Customer c) throws IOException {
 		customers.remove(c);
 		return this.saveAll();
 	}
 
 	@Override
-	public boolean update(Customer newCustomer) {
+	public boolean update(Customer newCustomer) throws IOException {
 		// get the old customer and remove it
 		Customer oldCustomer = this.get(newCustomer.getEmail());
 		int i = customers.indexOf(oldCustomer);
