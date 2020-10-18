@@ -103,6 +103,9 @@ public class CustomerManagerApp {
 		} catch (IOException e) {
 			System.out.println("Error retreiving customer");
 			return;
+		} catch (NoSuchCustomerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		System.out.println();
 		if (c != null)

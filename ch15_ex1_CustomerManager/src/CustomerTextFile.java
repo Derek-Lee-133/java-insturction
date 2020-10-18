@@ -56,10 +56,12 @@ public final class CustomerTextFile implements DAO<Customer> {
 	}
 
 	@Override
-	public Customer get(String email) throws IOException {
+	public Customer get(String email) throws IOException, NoSuchCustomerException {
 		for (Customer c : customers) {
 			if (c.getEmail().equals(email)) {
 				return c;
+			}if (c.getEmail()!= (email)) {
+				throw new NoSuchCustomerException("NO such customer excists");
 			}
 		}
 		return null;
