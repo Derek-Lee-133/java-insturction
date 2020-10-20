@@ -24,7 +24,6 @@ public final class CustomerTextFile implements DAO<Customer> {
 		customersFile = customersPath.toFile();
 		customers = this.getAll();
 	}
-	
 
 	@Override
 	public List<Customer> getAll() throws IOException {
@@ -34,37 +33,35 @@ public final class CustomerTextFile implements DAO<Customer> {
 		}
 
 		customers = new ArrayList<>();
-		
-			try (BufferedReader in = new BufferedReader(new FileReader(customersFile))) {
-				String line = in.readLine();
-				while (line != null) {
-					String [] fields = line.split(FIELD_SEP);
-					String firstName = fields[0]; 
-					String lastName = fields [1];
-					String email = fields[2];
-					
-					Customer c = new Customer (firstName, lastName, email);
-					customers.add(c);
-					
-					line = in.readLine();
-					
-				}
-			}
 
+		try (BufferedReader in = new BufferedReader(new FileReader(customersFile))) {
+			String line = in.readLine();
+			while (line != null) {
+				String[] fields = line.split(FIELD_SEP);
+				String firstName = fields[0];
+				String lastName = fields[1];
+				String email = fields[2];
+
+				Customer c = new Customer(firstName, lastName, email);
+				customers.add(c);
+
+				line = in.readLine();
+
+			}
+		}
 
 		return customers;
 	}
 
 	@Override
-	public Customer get(String email) throws IOException, NoSuchCustomerException {
+	public Customer get(String email) throws NoSuchCustomerException {
 		for (Customer c : customers) {
 			if (c.getEmail().equals(email)) {
 				return c;
-			}if (c.getEmail()!= (email)) {
-				throw new NoSuchCustomerException("NO such customer excists");
 			}
+			
 		}
-		return null;
+		throw new NoSuchCustomerException ("Customer with email "+ email + "not found");
 	}
 
 	@Override
@@ -80,16 +77,21 @@ public final class CustomerTextFile implements DAO<Customer> {
 	}
 
 	@Override
-	public boolean update(Customer newCustomer) throws IOException {
-		// get the old customer and remove it
-		Customer oldCustomer = this.get(newCustomer.getEmail());
-		int i = customers.indexOf(oldCustomer);
-		customers.remove(i);
+	public boolean update(Customer newCustomer) throws IOException, NoSuchCustomerException  {
+		
+			// get the old customer and remove it
+		try {	Customer oldCustomer = this.get(newCustomer.getEmail());
+			int i = customers.indexOf(oldCustomer);
+			customers.remove(i);
 
-		// add the updated customer
-		customers.add(i, newCustomer);
-
-		return this.saveAll();
+			// add the updated customer
+			customers.add(i, newCustomer);
+		}catch (NoSuchCustomerException ignored) {
+			return false;
+		}
+	  return this.saveAll();
+		// TODO Auto-generated catch block
+		
 	}
 
 	private boolean saveAll() {
@@ -99,13 +101,13 @@ public final class CustomerTextFile implements DAO<Customer> {
 				out.print(c.getFirstName() + FIELD_SEP);
 				out.print(c.getLastName() + FIELD_SEP);
 				out.print(c.getEmail());
-			}return true;
-		
-		}catch (IOException e) {
+			}
+			return true;
+
+		} catch (IOException e) {
 			System.out.println(e);
 			return false;
 		}
 
-		
 	}
 }

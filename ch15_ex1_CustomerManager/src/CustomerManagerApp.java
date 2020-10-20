@@ -104,14 +104,15 @@ public class CustomerManagerApp {
 			System.out.println("Error retreiving customer");
 			return;
 		} catch (NoSuchCustomerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
+			System.out.println(e.getMessage());
 		}
 		System.out.println();
 		if (c != null)
 			try {
 				customerDAO.delete(c);
 				System.out.println(c.getName() + " has been deleted.\n");
+				return;
 			} catch (IOException e) {
 				System.out.println("Error deleting customer");
 				return;

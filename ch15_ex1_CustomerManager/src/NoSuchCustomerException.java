@@ -1,7 +1,9 @@
 
 public class NoSuchCustomerException extends Exception {
-	public NoSuchCustomerException(String errorMessage) {
-		super(errorMessage);
+	public NoSuchCustomerException() {
+		
 	}
-
+public NoSuchCustomerException (String message) {
+	super(message);
+}
 }
