@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 
 public class Rectiangle {
 
@@ -31,8 +32,10 @@ public class Rectiangle {
 		
 	}
 	
-//	public static String getAreaAsString(double width,double length){
-//		String area = Rectiangle.getAreaOfRectangle(width, length);
-//		return area;
-//	} 
+	public static String getAreaAsString(double width,double length){
+		double area = Rectiangle.getAreaOfRectangle(width, length);
+		DecimalFormat df = new DecimalFormat();
+		String area1 = df.format(area);
+		return area1;
+	} 
 }

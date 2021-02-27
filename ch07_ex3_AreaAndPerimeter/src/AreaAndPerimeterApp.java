@@ -20,6 +20,7 @@ public class AreaAndPerimeterApp {
 
             // calculate total
             double area = Rectiangle.getAreaOfRectangle(width, length);
+            String area1 = Rectiangle.getAreaAsString(width, length);
             double perimeter = 2 * width + 2 * length;
             
             // format and display output
@@ -27,6 +28,7 @@ public class AreaAndPerimeterApp {
             number.setMinimumFractionDigits(3);
             String message = 
                 "Area:         " + number.format(area) + "\n" +
+                "AreaString:         " + area1 + "\n" +
                 "Perimeter:    " + number.format(perimeter) + "\n";
             System.out.println(message);
 
