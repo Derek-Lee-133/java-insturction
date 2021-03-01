@@ -21,7 +21,7 @@ public class AreaAndPerimeterApp {
             // calculate total
             double area = Rectiangle.getAreaOfRectangle(width, length);
             String area1 = Rectiangle.getAreaAsString(width, length);
-            double perimeter = 2 * width + 2 * length;
+            double perimeter = Rectiangle.getPerimeterOfRectangle(width, length);
             
             // format and display output
             NumberFormat number = NumberFormat.getNumberInstance();

@@ -38,4 +38,9 @@ public class Rectiangle {
 		String area1 = df.format(area);
 		return area1;
 	} 
+	public static double getPerimeterOfRectangle(double width, double length) {
+		
+		double perimeter = 2 * width + 2 * length;
+		return perimeter;
+	}
 }
