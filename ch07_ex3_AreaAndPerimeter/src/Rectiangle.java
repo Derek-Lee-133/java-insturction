@@ -1,4 +1,4 @@
-import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class Rectiangle {
 
@@ -31,16 +31,27 @@ public class Rectiangle {
 		 return area;
 		
 	}
-	
-	public static String getAreaAsString(double width,double length){
-		double area = Rectiangle.getAreaOfRectangle(width, length);
-		DecimalFormat df = new DecimalFormat();
-		String area1 = df.format(area);
-		return area1;
-	} 
+	 
 	public static double getPerimeterOfRectangle(double width, double length) {
 		
 		double perimeter = 2 * width + 2 * length;
+		
 		return perimeter;
+	}
+	public static void formatAreaOfRectangle(double area) {
+		
+		 NumberFormat number = NumberFormat.getNumberInstance();
+         number.setMinimumFractionDigits(3);
+         String message = "Area:         " + number.format(area);
+         System.out.println(message);
+
+	}
+	public static void formatPerimeterOfRectangle(double perimeter) {
+		
+		 NumberFormat number = NumberFormat.getNumberInstance();
+        number.setMinimumFractionDigits(3);
+        String message = "Perimeter:         " + number.format(perimeter);
+        System.out.println(message);
+
 	}
 }

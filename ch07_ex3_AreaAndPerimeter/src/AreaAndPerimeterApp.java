@@ -17,21 +17,15 @@ public class AreaAndPerimeterApp {
 
             System.out.print("Enter width:  ");
             double width = Double.parseDouble(sc.nextLine());
+            System.out.println();
 
             // calculate total
             double area = Rectiangle.getAreaOfRectangle(width, length);
-            String area1 = Rectiangle.getAreaAsString(width, length);
             double perimeter = Rectiangle.getPerimeterOfRectangle(width, length);
             
             // format and display output
-            NumberFormat number = NumberFormat.getNumberInstance();
-            number.setMinimumFractionDigits(3);
-            String message = 
-                "Area:         " + number.format(area) + "\n" +
-                "AreaString:         " + area1 + "\n" +
-                "Perimeter:    " + number.format(perimeter) + "\n";
-            System.out.println(message);
-
+           Rectiangle.formatAreaOfRectangle(area);
+           Rectiangle.formatPerimeterOfRectangle(perimeter);
             // see if the user wants to continue
             System.out.print("Continue? (y/n): ");
             choice = sc.nextLine();
