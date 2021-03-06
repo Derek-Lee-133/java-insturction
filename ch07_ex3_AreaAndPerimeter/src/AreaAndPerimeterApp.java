@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.text.NumberFormat;
 
 public class AreaAndPerimeterApp {
 
@@ -20,13 +19,16 @@ public class AreaAndPerimeterApp {
             System.out.println();
 
             // calculate total
-            double area = Rectiangle.getAreaOfRectangle(width, length);
-            double perimeter = Rectiangle.getPerimeterOfRectangle(width, length);
+            Rectangle rectangle= new Rectangle(width, length);
+            System.out.println(rectangle);
+            double area = Rectangle.getAreaOfRectangle(width, length);
+            double perimeter = Rectangle.getPerimeterOfRectangle(width, length);
             
             // format and display output
-           Rectiangle.formatAreaOfRectangle(area);
-           Rectiangle.formatPerimeterOfRectangle(perimeter);
-            // see if the user wants to continue
+           Rectangle.formatAreaOfRectangle(area);
+           Rectangle.formatPerimeterOfRectangle(perimeter);
+            
+           // see if the user wants to continue
             System.out.print("Continue? (y/n): ");
             choice = sc.nextLine();
             System.out.println();

@@ -1,13 +1,13 @@
 import java.text.NumberFormat;
 
-public class Rectiangle {
+public class Rectangle {
 
 	private double length;
 	private double width;
-	public Rectiangle() {
+	public Rectangle() {
 		super();
 	}
-	public Rectiangle(double length, double width) {
+	public Rectangle(double length, double width) {
 		super();
 		this.length = length;
 		this.width = width;
