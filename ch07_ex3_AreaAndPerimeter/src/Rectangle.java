@@ -54,4 +54,10 @@ public class Rectangle {
         System.out.println(message);
 
 	}
+	public double getArea() {
+		return width * length;
+	}
+	public double getPerimeter() {
+		return 2 * width + 2 * length;
+	}
 }

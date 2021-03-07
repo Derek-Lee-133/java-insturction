@@ -19,11 +19,12 @@ public class AreaAndPerimeterApp {
             System.out.println();
 
             // calculate total
-            Rectangle rectangle= new Rectangle(width, length);
+            Rectangle rectangle = new Rectangle(width, length);
             System.out.println(rectangle);
-            double area = Rectangle.getAreaOfRectangle(width, length);
-            double perimeter = Rectangle.getPerimeterOfRectangle(width, length);
-            
+      //      double area = Rectangle.getAreaOfRectangle(width, length);
+            double area = rectangle.getArea();
+            // double perimeter = Rectangle.getPerimeterOfRectangle(width, length);
+            double perimeter = rectangle.getPerimeter();
             // format and display output
            Rectangle.formatAreaOfRectangle(area);
            Rectangle.formatPerimeterOfRectangle(perimeter);
