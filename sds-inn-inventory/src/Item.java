@@ -4,7 +4,7 @@ public class Item {
 	private String Name;
 	private int SellIn;
 	private int Quality;
-	
+
 	public Item() {
 		super();
 	}
@@ -39,9 +39,12 @@ public class Item {
 	public void setQuality(int quality) {
 		Quality = quality;
 	}
-	
-	
-	
 
+	// printing array of Item
+	@Override
+	public String toString() {
+		return String.format("Inventory" + "\n" + "Name: " + Name + "\n" +
+	"Sellin: " + SellIn + "\n"+ "Quality: " + Quality + "\n");
+	}
 
 }
